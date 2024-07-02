@@ -1,5 +1,19 @@
 package edu.utvt.mx.data.persistence.service;
 
-public interface ItemService {
+import java.util.List;
+import java.util.Optional;
 
+import edu.utvt.mx.data.persistence.entities.Item;
+
+public interface ItemService {
+	
+	   List<Item> getAllItems();
+	   
+	    Optional<Item> getItemById(Long id);
+	    
+	    List<Item> getItemsByName(String name);
+	    
+	    Item saveItem(Item item);
+	    
+	    void deleteItem(Long id);
 }
