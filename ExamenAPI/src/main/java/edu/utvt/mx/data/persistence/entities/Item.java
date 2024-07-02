@@ -5,16 +5,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "items")
 public class Item {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+	 @Id
+	 @GeneratedValue(generator = "UUID")
+	 @Column(updatable = false, nullable = false)
+	 private UUID id;
 
     @Column(nullable = false)
     private String name;
