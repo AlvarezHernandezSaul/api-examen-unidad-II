@@ -28,8 +28,8 @@ public class PersonaServiceImplementation implements PersonaService {
     }
 
     @Override
-    public List<Persona> getPersonasByName(String name) {
-        return personaRepository.findByName(name);
+    public List<Persona> getPersonasByNombre(String nombre) {
+        return personaRepository.findByNombre(nombre);
     }
 
     @Override

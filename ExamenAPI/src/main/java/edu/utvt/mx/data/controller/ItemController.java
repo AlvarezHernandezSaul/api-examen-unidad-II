@@ -1,7 +1,6 @@
 package edu.utvt.mx.data.controller;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,48 +16,46 @@ import edu.utvt.mx.data.persistence.entities.Item;
 import edu.utvt.mx.data.persistence.service.ItemService;
 
 @RestController
-@RequestMapping("/api/exa/items")
+@RequestMapping("/items")
 public class ItemController {
-	
-	@Autowired
-	private ItemService itemService;
-	
-	@GetMapping
-	public List<Item> getAllItems(){
-		return itemService.getAllItems();
-	}
 
-	@GetMapping("/{id}")
-	public Item getItemById(@PathVariable UUID id) {
-		return itemService.getItemById(id).orElse(null);
-	}
-	
-	@GetMapping("/name/{name}")
-    public List<Item> getItemsByName(@PathVariable String name) {
-		  return itemService.getItemsByName(name);
-	}
-	
-	@PostMapping
-	public Item createItem(@RequestBody Item item) {
-		return itemService.saveItem(item);
-	}
-	
-	@PutMapping("/{id}")
-	public Item updateItem(@PathVariable UUID id, @RequestBody Item itemDetails) {
-		
-		Item item = itemService.getItemById(id).orElse(itemDetails);
-		  if (item != null) {
-	            item.setName(itemDetails.getName());
-	            item.setDescription(itemDetails.getDescription());
-	            item.setPersona(itemDetails.getPersona());
-	            return itemService.saveItem(item);
-	        }
-	        return null;
-	    }
+    @Autowired
+    private ItemService itemService;
 
-	@DeleteMapping("/{id}")
-	public void deleteItem(@PathVariable UUID id) {
-		itemService.deleteItem(id);
-	}
-	
+    @GetMapping
+    public List<Item> getAllItems() {
+        return itemService.getAllItems();
+    }
+
+    @GetMapping("/{id}")
+    public Item getItemById(@PathVariable Long id) {
+        return itemService.getItemById(id).orElse(null);
+    }
+
+    @GetMapping("/nombre/{nombre}")
+    public List<Item> getItemsByNombre(@PathVariable String nombre) {
+        return itemService.getItemsByNombre(nombre);
+    }
+
+    @PostMapping
+    public Item createItem(@RequestBody Item item) {
+        return itemService.saveItem(item);
+    }
+
+    @PutMapping("/{id}")
+    public Item updateItem(@PathVariable Long id, @RequestBody Item itemDetails) {
+        Item item = itemService.getItemById(id).orElse(null);
+        if (item != null) {
+            item.setNombre(itemDetails.getNombre());
+            item.setPrecio(itemDetails.getPrecio());
+            item.setPersona(itemDetails.getPersona());
+            return itemService.saveItem(item);
+        }
+        return null;
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteItem(@PathVariable Long id) {
+        itemService.deleteItem(id);
+    }
 }

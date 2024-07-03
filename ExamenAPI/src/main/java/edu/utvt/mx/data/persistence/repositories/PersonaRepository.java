@@ -8,5 +8,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface PersonaRepository extends JpaRepository<Persona, UUID> {
-    List<Persona> findByName(String name);
+    List<Persona> findByNombre(String nombre);
 }

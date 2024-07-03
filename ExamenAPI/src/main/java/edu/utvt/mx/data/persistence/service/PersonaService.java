@@ -9,13 +9,13 @@ import java.util.UUID;
 
 public interface PersonaService {
 	
-    List<Persona> getAllPersonas();
-    
-    Optional<Persona> getPersonaById(UUID id);
-    
-    List<Persona> getPersonasByName(String name);
-    
-    Persona savePersona(Persona persona);
-    
-    void deletePersona(UUID id);
+	 List<Persona> getAllPersonas();
+	 
+	    Optional<Persona> getPersonaById(UUID id);
+	    
+	    List<Persona> getPersonasByNombre(String nombre);
+	    
+	    Persona savePersona(Persona persona);
+	    
+	    void deletePersona(UUID id);
 }

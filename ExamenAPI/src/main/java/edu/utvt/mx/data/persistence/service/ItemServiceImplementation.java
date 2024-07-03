@@ -9,7 +9,6 @@ import edu.utvt.mx.data.persistence.repositories.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
 
 @Service
 public class ItemServiceImplementation implements ItemService {
@@ -23,13 +22,13 @@ public class ItemServiceImplementation implements ItemService {
     }
 
     @Override
-    public Optional<Item> getItemById(UUID id) {
+    public Optional<Item> getItemById(Long id) {
         return itemRepository.findById(id);
     }
 
     @Override
-    public List<Item> getItemsByName(String name) {
-        return itemRepository.findByName(name);
+    public List<Item> getItemsByNombre(String nombre) {
+        return itemRepository.findByNombre(nombre);
     }
 
     @Override
@@ -38,7 +37,7 @@ public class ItemServiceImplementation implements ItemService {
     }
 
     @Override
-    public void deleteItem(UUID id) {
+    public void deleteItem(Long id) {
         itemRepository.deleteById(id);
     }
 }

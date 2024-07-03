@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
+import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor
@@ -14,15 +14,16 @@ import java.util.UUID;
 @Table(name = "items")
 public class Item {
 
-	 @Id
-	 @GeneratedValue(generator = "UUID")
-	 @Column(updatable = false, nullable = false)
-	 private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false, nullable = false)
+    private Long id;
+
+    @Column(nullable = false, length = 50)
+    private String nombre;
 
     @Column(nullable = false)
-    private String name;
-
-    private String description;
+    private BigDecimal precio;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "persona_id")

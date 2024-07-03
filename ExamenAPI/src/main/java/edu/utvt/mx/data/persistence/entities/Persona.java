@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Date;
 import java.util.UUID;
 
 @Data
@@ -20,11 +20,14 @@ public class Persona {
     @Column(updatable = false, nullable = false)
     private UUID id;
 
+    @Column(nullable = false, length = 50)
+    private String nombre;
+
     @Column(nullable = false)
-    private String name;
+    private int edad;
 
-    private String email;
-
-    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Item> items;
+    @Column(name = "fecha_nacimiento", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date fechaNacimiento;
 }
+
